@@ -84,8 +84,6 @@ class InitiallyFinalSpec extends FlatSpec with Matchers {
   }
 
   "A job repository" should "retrieve jobs for specific accounts" in {
-    val skill = SkillTag(TagId("skill1"), "skill 1")
-
     val acc1 = AccountId("acc1")
     val acc2 = AccountId("acc2")
 

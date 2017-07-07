@@ -5,7 +5,12 @@ import scalawave.model._
 import cats.Functor
 import cats.syntax.all._
 
-abstract class JobRepoKVInterp[F[_]: Functor] extends RepositoryKVInterpr[JobId, Job, F] {
+import scalawave.repository.JobRepository
+
+abstract class JobRepoKVInterp[F[_]: Functor]
+  extends RepositoryKVInterpr[JobId, Job, F]
+  with JobRepository[F] {
+
   def forAccount(aId: AccountId): F[Iterable[Job]] = {
     kvs.values.map(_.filter(_.accountId == aId))
   }
